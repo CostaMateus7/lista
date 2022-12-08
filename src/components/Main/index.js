@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { BsPlusSquare, BsPen } from 'react-icons/bs';
-import { AiOutlineDelete } from 'react-icons/ai';
+import Form from '../Form';
+import List from '../List';
 
 export default function Main() {
   const [list, setList] = useState([]);
   const [todo, setTodo] = useState({
+    id: Math.random(),
     title: '',
     isComplete: false,
     update: -1,
@@ -34,6 +35,7 @@ export default function Main() {
       const copy = [...list, todo];
       setList(copy);
       setTodo({
+        id: Math.random(),
         title: '',
         isComplete: false,
         update: -1,
@@ -45,6 +47,7 @@ export default function Main() {
       copyList[index] = todo;
       setList(copyList);
       setTodo({
+        id: Math.random(),
         title: '',
         isComplete: false,
         update: -1,
@@ -63,6 +66,7 @@ export default function Main() {
   const handleUpdate = (index) => {
     const copyList = [...list];
     setTodo({
+      id: todo.id,
       title: copyList[index].title,
       isComplete: false,
       update: index,
@@ -70,48 +74,20 @@ export default function Main() {
   };
 
   return (
+    <div className="container">
+      <Form
+        handleChange={handleChange}
+        todoTitle={todo.title}
+        todoUpdate={todo.update}
+        setTodo={setTodo}
+      />
+      <List
+        handleCheckTodo={handleCheckTodo}
+        handleDeleteTodo={handleDeleteTodo}
+        handleUpdate={handleUpdate}
+        list={list}
+      />
+    </div>
 
-    <form onSubmit={(e) => e.preventDefault()} className="container">
-      <h1>Lista de Tarefas</h1>
-      <div className="miniContainer">
-        <input
-          type="text"
-          value={todo.title}
-          onChange={(e) => setTodo({
-            title: e.target.value,
-            isComplete: false,
-            update: todo.update,
-          })}
-        />
-        <button
-          type="submit"
-          className="plus"
-          onClick={handleChange}
-        >
-          <BsPlusSquare className="svg" />
-        </button>
-
-      </div>
-      <ul>
-        {list?.map((li, index) => (
-
-          <li key={li}>
-            <div>
-              <input
-                type="checkbox"
-                onClick={() => handleCheckTodo(index)}
-                checked={li.isComplete === true ? 'checked' : ''}
-              />
-              {li.isComplete === false ? li.title : <s>{li.title}</s>}
-            </div>
-            <div>
-              <BsPen onClick={() => handleUpdate(index)} />
-              <AiOutlineDelete onClick={() => handleDeleteTodo(index)} />
-            </div>
-          </li>
-
-        ))}
-      </ul>
-    </form>
   );
 }

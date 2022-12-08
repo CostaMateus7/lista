@@ -50,7 +50,7 @@ li{
   align-items: center;
   width: 80%;
   padding: 10px;
-  font-size: 18px;
+  font-size: 20px;
 
 }
 ul{
@@ -64,8 +64,7 @@ li svg{
   margin: 10px;
 }
 input[type='checkbox']{
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
   margin: 10px;
 }
-
