@@ -1,5 +1,7 @@
 **Projeto to-do list para fins de estudo**
 
+Acesse a página 👉 https://costamateus7.github.io/lista/
+
 Com esse projeto pude treinar, fixar, desenvolver alguns temas fundamentais para o desenvolvimento web:
 
 - Organização de pastas
@@ -24,3 +26,5 @@ Com esse projeto pude treinar, fixar, desenvolver alguns temas fundamentais para
 - JSON
 - CRUD
 - Git/Github
+- GH-pages
+
